@@ -15,16 +15,9 @@ RANDOM_STATE = 42
 
 
 def load_data() -> pd.DataFrame:
-    """Загружаю данные из датасета.
-    Если сайт не работает, загружаю файлом.
-    """
-    try:
-        df = fetch_openml("titanic", version=1, as_frame=True).frame
-        return df
-    except Exception:
-        df = pd.read_csv('titanic_openml.csv')
-        return df
-
+    """Загружаю данные из OpenML (titanic, version=1)."""
+    df = fetch_openml("titanic", version=1, as_frame=True).frame
+    return df
 
 def extract_title(name_series: pd.Series) -> pd.Series:
     """Извлекаю титулы людей из колонки name.
